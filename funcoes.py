@@ -70,11 +70,11 @@ def esquecisenha_bd(email, usuario):
         return False
 
 
-def altera_senha_bd(usuario, senha):
+def altera_senha_bd(usuario, senha): # Aqui falta guardar o nome do usuario
     hashsenha = sha256(senha.encode()).hexdigest()
     conn = sqlite3.connect('dados_usuarios.db')
     cursor = conn.cursor()
-    cursor.execute('''UPDATE users SET SENHA = ? WHERE USER = ?
+    cursor.execute('''UPDATE users SET SENHA = ? WHERE USUARIO = ?
     ''', (hashsenha, usuario))
     conn.commit()
     conn.close()

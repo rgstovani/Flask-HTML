@@ -19,7 +19,7 @@ def esqueciasenha():
     return render_template('esqueciasenha.html')
 
 
-@app.route('/autenticar', methods=['POST', 'GET'])
+@app.route('/autenticar_troca', methods=['POST', 'GET'])
 def autenticar_troca_senha():
     teste = esquecisenha_bd(request.form.get('email'), request.form.get('usuario'))
 
@@ -34,7 +34,7 @@ def alterarsenha():
     return render_template('alterarsenha.html')
 
 
-# pagina intermediaria
+# pagina intermediaria para autenticação do login
 @app.route('/autenticar', methods=['POST', 'GET'])
 def index():
     login = teste_login(request.form.get('usuario'), request.form.get('senha'))
@@ -47,11 +47,14 @@ def index():
 
 @app.route('/cadastrar', methods=['POST', 'GET'])
 def cadastrar():
-    adiciona_usuario_bd(request.form.get('nome'),
-                        request.form.get('email'),
-                        request.form.get('usuario'),
-                        request.form.get('senha'))
-    return render_template('login.html')
+    if request.form.get('senha') == request.form.get('repetesenha'):
+        adiciona_usuario_bd(request.form.get('nome'),
+                            request.form.get('email'),
+                            request.form.get('usuario'),
+                            request.form.get('senha'))
+        return render_template('login.html')
+    else:
+        return render_template('cadastro.html')
 
 
 app.run()
