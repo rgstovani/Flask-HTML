@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cadastro</title>
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('login') }}">Início</a>
+        <a href="{{ url_for('cadastro') }}">Faça seu cadastro</a>
+
+    </header>
+    <main>
+        <h1>Tela de cadastro de usuário</h1>
+        <form action="{{ url_for('index') }}" method="POST">
+            <div>
+                <label>Nome completo (*)</label>
+                <input type="text" name="nomecompleto" id="nomecompleto" required>
+            </div>
+            <div>
+                <label>E-mail (*)</label>
+                <input type="text" name="email" id="email" required>
+            </div>
+            <div>
+                <label>Usuário (*)</label>
+                <input type="text" name="usuario" id="usuario" required>
+            </div>
+            <div>
+                <label>Senha (*)</label>
+                <input type="text" name="senha" id="senha" required>
+            </div>
+            <div>
+                <label>Repita a senha (*)</label>
+                <input type="text" name="repetesenha" id="repetesenha" required>
+            </div>
+            <p>(*) Campo Obrigatório</p>
+            <button type="submit">Cadastrar</button>
+        </form>
+    </main> 
+</body>
+</html>
