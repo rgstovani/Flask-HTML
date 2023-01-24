@@ -1,61 +1,57 @@
-from flask import Flask, render_template, request, redirect
-
-class Usuario:
-    def __init__(self, nome, email, usuario, senha):
-        self.nome = nome
-        self.email = email
-        self.usuario = usuario
-        self.senha = senha
-
-    def novousuario(self):
-        self.nome = request.form.get('nome')
-        self.email = request.form.get('email')
-        self.usuario = request.form.get('usuario')
-        self.senha = request.form.get('senha')
-        print(self.nome, self.email, self.usuario, self.senha)
-
-
-cadastrado_usuario = 'ruan'
-cadastrado_senha = '1234'
+from funcoes import *
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-@app.route('/')
+
+@app.route('/', methods=['POST', 'GET'])
 def login():
     return render_template('login.html')
 
-@app.route('/cadastro')
+
+@app.route('/cadastro', methods=['POST', 'GET'])
 def cadastro():
     return render_template('cadastro.html')
 
-@app.route('/esqueciasenha')
+
+@app.route('/esqueciasenha', methods=['POST', 'GET'])
 def esqueciasenha():
     return render_template('esqueciasenha.html')
 
-@app.route('/autenticar', methods=['POST'])
-def index():
-    name = request.form.get('usuario')
-    senha = request.form.get('senha')
-    print(name, senha)
 
-    if name == cadastrado_usuario and senha == cadastrado_senha:
-        return render_template('index.html')
+@app.route('/autenticar', methods=['POST', 'GET'])
+def autenticar_troca_senha():
+    teste = esquecisenha_bd(request.form.get('email'), request.form.get('usuario'))
+
+    if teste is True:
+        return render_template('alterarsenha.html')
     else:
-        print('Senha invalida')
+        return render_template('esqueciasenha.html')
+
+
+@app.route('/alterarsenha', methods=['POST', 'GET'])
+def alterarsenha():
+    return render_template('alterarsenha.html')
+
+
+# pagina intermediaria
+@app.route('/autenticar', methods=['POST', 'GET'])
+def index():
+    login = teste_login(request.form.get('usuario'), request.form.get('senha'))
+
+    if login is False:
         return render_template('login.html')
+    if login is True:
+        return render_template('index.html')
 
-@app.route('/cadastrar', methods=['POST'])
+
+@app.route('/cadastrar', methods=['POST', 'GET'])
 def cadastrar():
-    nome = request.form.get('nome')
-    email = request.form.get('email')
-    usuario = request.form.get('usuario')
-    senha = request.form.get('senha')
-    print(nome, email, usuario, senha)
-
-
+    adiciona_usuario_bd(request.form.get('nome'),
+                        request.form.get('email'),
+                        request.form.get('usuario'),
+                        request.form.get('senha'))
     return render_template('login.html')
-
-
 
 
 app.run()

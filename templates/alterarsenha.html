@@ -14,21 +14,21 @@
     </header>
     <main>
         <div>
-            <h1>Esqueceu a senha?</h1>
+            <h1>Alterar Senha</h1>
             <p>Preencha as informações abaixo:</p>
         </div>
-        <form action="{{ url_for('autenticar_troca_senha') }}" method="POST">
+        <form action="{{ url_for('login') }}" method="POST">
             <div>
-                <label for="email">E-mail (*)</label>
-                <input type="text" name="email" id="email" required>
+                <label>Nova senha (*)</label>
+                <input type="text" name="senha" id="senha" required>
             </div>
             <div>
-                <label>Usuario (*)</label>
-                <input type="text" name="usuario" id="usuario" required>
+                <label>Repita a senha (*)</label>
+                <input type="text" name="repetesenha" id="repetesenha" required>
             </div>
 
-            <button type="submit">Recuperar senha</button>
-        </form>    
+            <button type="submit">Alterar senha</button>
+        </form>
     </main>
 </body>
 </html>
