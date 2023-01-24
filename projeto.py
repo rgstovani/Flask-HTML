@@ -7,8 +7,13 @@ class Usuario:
         self.usuario = usuario
         self.senha = senha
 
-    def cadastrar(self, nome, email, usuario, senha):
-        pass
+    def novousuario(self):
+        self.nome = request.form.get('nome')
+        self.email = request.form.get('email')
+        self.usuario = request.form.get('usuario')
+        self.senha = request.form.get('senha')
+        print(self.nome, self.email, self.usuario, self.senha)
+
 
 cadastrado_usuario = 'ruan'
 cadastrado_senha = '1234'
@@ -38,6 +43,19 @@ def index():
     else:
         print('Senha invalida')
         return render_template('login.html')
+
+@app.route('/cadastrar', methods=['POST'])
+def cadastrar():
+    nome = request.form.get('nome')
+    email = request.form.get('email')
+    usuario = request.form.get('usuario')
+    senha = request.form.get('senha')
+    print(nome, email, usuario, senha)
+
+
+    return render_template('login.html')
+
+
 
 
 app.run()

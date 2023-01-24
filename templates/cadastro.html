@@ -14,10 +14,10 @@
     </header>
     <main>
         <h1>Tela de cadastro de usuário</h1>
-        <form action="{{ url_for('index') }}" method="POST">
+        <form action="{{ url_for('cadastrar') }}" method="POST">
             <div>
                 <label>Nome completo (*)</label>
-                <input type="text" name="nomecompleto" id="nomecompleto" required>
+                <input type="text" name="nome" id="nome" required>
             </div>
             <div>
                 <label>E-mail (*)</label>
