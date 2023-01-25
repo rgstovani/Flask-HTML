@@ -9,7 +9,7 @@ def cria_bd():
     CREATE TABLE IF NOT EXISTS users (
     NOME TEXT NOT NULL,
     EMAIL TEXT NOT NULL,
-    USUARIO TEXT NOT NULL,
+    USUARIO TEXT NOT NULL UNIQUE,
     SENHA TEXT NOT NULL);
     ''')
     conn.commit()
@@ -20,13 +20,17 @@ def adiciona_usuario_bd(nome, email, usuario, senha):
     cria_bd()
     hashsenha = sha256(senha.encode()).hexdigest()
     hashusuario = sha256(usuario.encode()).hexdigest()
-    conn = sqlite3.connect('dados_usuarios.db')
-    cursor = conn.cursor()
-    cursor.execute('''
-    INSERT INTO users VALUES (:NOME, :EMAIL, :USUARIO, :SENHA)
-    ''', {"NOME": nome, "EMAIL": email, "USUARIO": hashusuario, "SENHA": hashsenha})
-    conn.commit()
-    conn.close()
+    try:
+        conn = sqlite3.connect('dados_usuarios.db')
+        cursor = conn.cursor()
+        cursor.execute('''
+        INSERT INTO users VALUES (:NOME, :EMAIL, :USUARIO, :SENHA)
+        ''', {"NOME": nome, "EMAIL": email, "USUARIO": hashusuario, "SENHA": hashsenha})
+        conn.commit()
+        conn.close()
+    except sqlite3.Error:
+        return False
+
 
 
 def teste_login(usuario, senha):

@@ -14,10 +14,21 @@
     </header>
     <main>
         <div>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul id="messages" class="list-unstyled">
+                    {% for message in messages %}
+                        <li class="alert alert-success">{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
+        <div>
             <h1>Alterar Senha</h1>
             <p>Preencha as informações abaixo:</p>
         </div>
-        <form action="{{ url_for('login') }}" method="POST">
+        <form>
             <div>
                 <label>Nova senha (*)</label>
                 <input type="text" name="senha" id="senha" required>

@@ -14,11 +14,22 @@
     </header>
     <main>
         <div>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul id="messages" class="list-unstyled">
+                    {% for message in messages %}
+                        <li class="alert alert-success">{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
+        <div>
             <h1>Bem vindo!</h1>
             <p>Faça seu login.</p>
         </div>
 
-        <form action="{{ url_for('index') }}" method="POST">
+        <form action="{{ url_for('autenticar') }}" method="POST">
             <fieldset>
                 <div>
                     <label>Usuario</label>

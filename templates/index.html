@@ -7,8 +7,24 @@
     <title>Tela inicial</title>
 </head>
 <body>
+    <header>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </header>
+
+        <div>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul id="messages" class="list-unstyled">
+                    {% for message in messages %}
+                        <li class="alert alert-success">{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
 
     <h1>Parabens, você logou.</h1>
+
 
 </body>
 </html>
