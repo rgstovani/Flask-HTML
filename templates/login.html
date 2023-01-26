@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 </head>
 <body>
     <header>
@@ -24,27 +26,30 @@
                 {% endif %}
             {% endwith %}
         </div>
-        <div>
+    <div class="teste">
+        <div class="bemvindo">
             <h1>Bem vindo!</h1>
-            <p>Faça seu login.</p>
+            <p class="frases">Faça seu login.</p>
         </div>
 
         <form action="{{ url_for('autenticar') }}" method="POST">
-            <fieldset>
+            <fieldset class="dados_login">
                 <div>
-                    <label>Usuario</label>
+                    <label class="label_login">Usuario</label>
                     <input type="text" name="usuario">
                 </div>
                 <div>
-                    <label>Senha</label>
+                    <label class="label_login">Senha</label>
                     <input type="password" name="senha">
                 </div>
             </fieldset>
             <div>
                 <button type="submit">Logar</button>
-            </div>
-        </form>
-        <a href="{{ url_for('esqueciasenha') }}">Esqueceu a senha?</a>
+                </div>
+            </form>
+            <a class="frases" href="{{ url_for('esqueciasenha') }}">Esqueceu a senha?</a>
+        </div>
     </main>
+
 </body>
 </html>
