@@ -81,4 +81,5 @@ def alterarsenha():
     return render_template('alterarsenha.html')
 
 
-app.run(debug=True)
+app.run()
+''
