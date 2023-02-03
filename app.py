@@ -82,4 +82,3 @@ def alterarsenha():
 
 
 app.run()
-''
