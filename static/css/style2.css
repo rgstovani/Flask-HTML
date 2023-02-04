@@ -6,6 +6,14 @@
    --cor5: rgba(254,189,247,1);
    --cor6: rgba(190,200,235,1);
 
+   --azul1:#0A2647;
+   --azul2:#144272;
+   --azul3:#205295;
+   --azul4:#2C74B3;
+   --azul5:#82AAE3;
+   --azul6:#91D8E4;
+   --azul7:#EAFDFC;
+   --laranja: #FF6E31;
 }
 
 * {
@@ -15,7 +23,8 @@
 
 html {
     height: 100%;
-    background-image: linear-gradient(180deg, rgba(190,200,235,1), rgba(254,189,247,1));
+    background-color: var(--azul2);
+    font-family: 'Montserrat', sans-serif;
 }
 
 header {
@@ -23,19 +32,24 @@ header {
     display: flex;
     justify-content: space-around;
     align-items: baseline;
-    align-content: baseline;  
+    align-content: baseline;
 }
 
 .link {
-    background-color: #000000;
+    background-color: var(--azul5);
     text-decoration: none;
     border-radius: 5px;
+    box-shadow: 0px 0px 10px 2px var(--azul1);
+    border-color: var(--azul1);
+    color: var(--azul1);
+    font-weight: 700;
     text-align: center;
     padding: .6em 1em ;
 }
 
 body {
-    font-size: 16px;
+    font-size: 14px;
+    color: var(--azul7);
 
 }
 
@@ -49,8 +63,14 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+.texto-apresentacao{
+    padding: 20px 40px;
+}
 h1 {
+    color: var(--azul5);
     padding: 0.5em;
+    text-shadow: 5px 5px 3px var(--azul1);
 }
 .apresentacao p{
     text-align: center;
@@ -58,7 +78,9 @@ h1 {
 }
 
 h2 {
+    color: var(--azul5);
     font-size: 20px;
+    text-shadow: 5px 5px 3px var(--azul1);
     text-align: center;
     padding: 1em;
 }
@@ -71,6 +93,8 @@ form {
 }
 
 .dados_login {
+    background-color: var(--azul1);
+    color: var(--azul7);
     padding: 20px 40px;
     border-radius: 10px;
 }
@@ -80,7 +104,7 @@ form {
 }
 
 .label_senha {
-    padding-right: 10px;
+    padding-right: 9px;
 }
 
 .subdivisao {
@@ -94,8 +118,15 @@ form {
 }
 
 button { 
+    background-color: var(--laranja);
     padding: 0.5em 1em;
     border-radius: 5px;
-    font-size: 16px;
-}
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    box-shadow: 0px 0px 10px 2px var(--azul1);
+    border-color: var(--azul1);
+    border-style: none;
 
+    color: var(--azul7);
+    font-weight: 700;
+}
