@@ -72,16 +72,26 @@ def autenticar_troca_senha():
     teste = esquecisenha_bd(request.form.get('email'), request.form.get('usuario'))
 
     if teste is True:
+        session['usuario_logado'] = request.form['usuario']
         return render_template('alterarsenha.html')
+
     else:
         return render_template('esqueciasenha.html')
 
 
-@app.route('/alterarsenha')
+@app.route('/alterarsenha', methods=['POST', 'GET'])
 def alterarsenha():
-    return render_template('alterarsenha.html')
+    if request.form.get('senha') == request.form.get('repetesenha'):
+        usuario = str(session['usuario_logado'])
+        senha = str(request.form.get('senha'))
+
+        altera_senha_bd(usuario, senha)
+        flash('Senha alterada com sucesso.')
+        return redirect(url_for('login'))
+    else:
+        flash('Senha não alterada.')
+        return render_template('alterarsenha.html')
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
-
