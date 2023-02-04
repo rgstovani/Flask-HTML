@@ -6,16 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}" />
+    <link rel="stylesheet" href="../static/css/style2.css">
 </head>
 <body>
     <header>
-        <a href="{{ url_for('login') }}">Início</a>
-        <a href="{{ url_for('cadastro') }}">Faça seu cadastro</a>
+        <a  class="link" href="{{ url_for('login') }}">Início</a>
+        <a  class="link" href="{{ url_for('cadastro') }}">Faça seu cadastro</a>
 
     </header>
     <main>
-        <div>
+        <section class="mensagem-flash">
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
                     <ul id="messages" class="list-unstyled">
@@ -25,30 +26,36 @@
                     </ul>
                 {% endif %}
             {% endwith %}
-        </div>
-    <div class="teste">
-        <div class="bemvindo">
-            <h1>Bem vindo!</h1>
-            <p class="frases">Faça seu login.</p>
-        </div>
+        </section>
 
-        <form action="{{ url_for('autenticar') }}" method="POST">
-            <fieldset class="dados_login">
-                <div>
-                    <label class="label_login">Usuario</label>
-                    <input type="text" name="usuario">
-                </div>
-                <div>
-                    <label class="label_login">Senha</label>
-                    <input type="password" name="senha">
-                </div>
-            </fieldset>
+        <section class="login">
+            <div class="apresentacao">
+                <h1>Seja bem vindo!</h1>
+                <p>Esta aplicação web foi desenvolvida usando Flask - Python, juntamente com HTML e CSS.<br>
+                    Faça seu cadastro e teste as funcionalidades existentes nela.</p>
+            </div>
+
             <div>
-                <button type="submit">Logar</button>
-                </div>
-            </form>
-            <a class="frases" href="{{ url_for('esqueciasenha') }}">Esqueceu a senha?</a>
-        </div>
+                <h2>Faça seu login.</h2>
+
+                <form action="{{ url_for('autenticar') }}" method="POST">
+                    <fieldset class="dados_login">
+                        <div class="input_login">
+                            <label class="label_login">Usuario</label>
+                            <input type="text" name="usuario">
+                        </div>
+                        <div class="input_login">
+                            <label class="label_senha">Senha</label>
+                            <input type="password" name="senha">
+                        </div>
+                    </fieldset>
+                    <div class="subdivisao">
+                        <button type="submit">Logar</button>
+                        <a class="link" href="{{ url_for('esqueciasenha') }}">Esqueceu a senha?</a>
+                    </div>
+                </form>
+            </div>
+        </section>
     </main>
 
 </body>
