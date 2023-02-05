@@ -10,12 +10,12 @@
 </head>
 <body>
     <header>
-        <a href="{{ url_for('login') }}">Início</a>
-        <a href="{{ url_for('cadastro') }}">Faça seu cadastro</a>
+        <a class="link" href="{{ url_for('login') }}">Início</a>
+        <a class="link" href="{{ url_for('cadastro') }}">Faça seu cadastro</a>
 
     </header>
     <main>
-        <div>
+        <section class="mensagem-flash">
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
                     <ul id="messages" class="list-unstyled">
@@ -25,23 +25,28 @@
                     </ul>
                 {% endif %}
             {% endwith %}
-        </div>
-        <div>
-            <h1>Esqueceu a senha?</h1>
-            <p>Preencha as informações abaixo:</p>
-        </div>
-        <form action="{{ url_for('autenticar_troca_senha') }}" method="POST">
-            <div>
-                <label for="email">E-mail (*)</label>
-                <input type="text" name="email" id="email" required>
+        </section>
+        <section class="esqueceu_senha">
+            <div class="informacoes">
+                <h1>Esqueceu a senha?</h1>
+                <p id="info_esqueceu_senha">Preencha as informações abaixo:</p>
             </div>
-            <div>
-                <label>Usuario (*)</label>
-                <input type="text" name="usuario" id="usuario" required>
-            </div>
-
-            <button type="submit">Recuperar senha</button>
-        </form>    
+            <form action="{{ url_for('autenticartroca_senha') }}" method="POST">
+                <fieldset class="dados_esqueceu_senha">
+                    <div class="input_esqueceu_senha">
+                        <label for="email">E-mail (*)</label>
+                        <input type="text" name="email" id="email" required>
+                    </div>
+                    <div class="input_esqueceu_senha">
+                        <label>Usuario (*)</label>
+                        <input type="text" name="usuario" id="usuario" required>
+                    </div>
+                </fieldset>
+                <div class="subdivisao">
+                    <button type="submit">Recuperar senha</button>
+                </div>
+            </form>   
+        </section> 
     </main>
 </body>
 </html>
