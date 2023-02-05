@@ -53,14 +53,13 @@ body {
 
 }
 
-.mensagem-flash {
-    display: none;
-    text-align: center;
-}
-
 .alert {
+    background-color: var(--laranja2);
+    color: var(--azul7);
+    
+    text-align: left;
     padding: 20px;
-    text-align: center;
+    
 }
 
 .apresentacao,
