@@ -10,12 +10,12 @@
 </head>
 <body>
     <header>
-        <a href="{{ url_for('login') }}">Início</a>
-        <a href="{{ url_for('cadastro') }}">Faça seu cadastro</a>
+        <a class="link" href="{{ url_for('login') }}">Início</a>
+        <a class="link" href="{{ url_for('cadastro') }}">Faça seu cadastro</a>
 
     </header>
     <main>
-        <div>
+        <section class="mensagem-flash">
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
                     <ul id="messages" class="list-unstyled">
@@ -25,34 +25,38 @@
                     </ul>
                 {% endif %}
             {% endwith %}
-        </div>
-        <h1>Tela de cadastro de usuário</h1>
-        <form action="{{ url_for('cadastrar') }}" method="POST">
-            <fieldset class="dados_login">
-                <div>
-                    <label>Nome completo (*)</label>
-                    <input type="text" name="nome" id="nome" required>
+        </section>
+        <section class="cadastro">
+            <h1>Tela de cadastro de usuário</h1>
+            <form action="{{ url_for('cadastrar') }}" method="POST">
+                <fieldset class="dados_cadastro">
+                    <div class="input_cadastro">
+                        <label>Nome completo (*)</label>
+                        <input type="text" name="nome" id="nome" required>
+                    </div>
+                    <div class="input_cadastro">
+                        <label>E-mail (*)</label>
+                        <input type="text" name="email" id="email" required>
+                    </div>
+                    <div class="input_cadastro">
+                        <label>Usuário (*)</label>
+                        <input type="text" name="usuario" id="usuario" required>
+                    </div>
+                    <div class="input_cadastro">
+                        <label>Senha (*)</label>
+                        <input type="password" name="senha" id="senha" required>
+                    </div>
+                    <div class="input_cadastro">
+                        <label>Repita a senha (*)</label>
+                        <input type="password" name="repetesenha" id="repetesenha" required>
+                    </div>
+                    <p>(*) Campo Obrigatório</p>
+                </fieldset>
+                <div class="subdivisao">
+                    <button type="submit">Cadastrar</button>
                 </div>
-                <div>
-                    <label>E-mail (*)</label>
-                    <input type="text" name="email" id="email" required>
-                </div>
-                <div>
-                    <label>Usuário (*)</label>
-                    <input type="text" name="usuario" id="usuario" required>
-                </div>
-                <div>
-                    <label>Senha (*)</label>
-                    <input type="text" name="senha" id="senha" required>
-                </div>
-                <div>
-                    <label>Repita a senha (*)</label>
-                    <input type="text" name="repetesenha" id="repetesenha" required>
-                </div>
-            </fieldset>
-            <p>(*) Campo Obrigatório</p>
-            <button type="submit">Cadastrar</button>
-        </form>
+            </form>
+        </section>
     </main> 
 </body>
 </html>
