@@ -1,117 +1,158 @@
 :root {
-   --cor1: rgba(253, 238, 220, 1);
-   --cor2: #fac17b;
-   --cor3: #ef9d50;
-   --cor4: #E38B29;
+   --azul1:#0A2647;
+   --azul2:#144272;
+   --azul3:#205295;
+   --azul4:#2C74B3;
+   --azul5:#82AAE3;
+   --azul6:#91D8E4;
+   --azul7:#EAFDFC;
+   --laranja: #FF6E31;
+   --laranja2: #c25527;
+}
 
-   /* --cor5: rgba(143, 248, 254, 1); */
-   --cor5: rgba(254,189,247,1);
-   --cor6: rgba(190,200,235,1);
-
-
+* {
+    margin: 0;
+    padding: 0;
 }
 
 html {
-   height: 100%;
-   background-image: linear-gradient(180deg, rgba(190,200,235,1), rgba(254,189,247,1));
-
-}
-
-
-body {
-   /* background-color: var(--cor1); */
-   
-   padding: 5px 10px;
-   font-size: 20px;
-   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
-}
-
-a {
-   text-decoration: none;
-   color: var(--cor2);
-   padding: 5px;
-   margin: 7px;
+    height: 100%;
+    background-color: var(--azul2);
+    font-family: 'Montserrat', sans-serif;
 }
 
 header {
-   display: flex;
-   justify-content: space-between;
- }
-
- main {
-   color: var(--cor3);
-   display: flex;
-   flex-direction: column;
-   align-items: center;
- }
-
- .teste {
-   /* background-color: rgba(253, 238, 220, .3); */
-   background-color: rgba(254,189,247, 0.3);
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-
-   box-shadow: 0px 0px 10px #000;
-   border-radius: 15px;
-   padding: 20px 20px 80px 20px;
-
-
-
- }
-
-
- .bemvindo {
-   color: var(--cor3);
-   text-align: center;
-   
-
- }
-
- h1 {
-   color: var(--cor4);
-   font-size: 30px;
-   padding: 20px;
+    margin: 1em;
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    align-content: baseline;
 }
 
-.frases {
-   padding: 10px;
+.link {
+    background-color: var(--azul5);
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 2px var(--azul1);
+    border-color: var(--azul1);
+    color: var(--azul1);
+    font-weight: 700;
+    text-align: center;
+    padding: .6em 1em ;
+}
+
+.link:hover {
+    background-color: var(--azul1);
+    color: var(--azul6);
+    box-shadow: 0px 0px 5px var(--azul7) inset;
+}
+
+body {
+    font-size: 14px;
+    color: var(--azul7);
+
+}
+
+.mensagem-flash {
+    display: none;
+    text-align: center;
+}
+
+.alert {
+    padding: 20px;
+    text-align: center;
+}
+
+.apresentacao,
+.cadastro,
+.esqueceu_senha,
+.informacoes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.texto-apresentacao,
+#info_esqueceu_senha {
+    padding: 20px 40px;
+}
+
+h1 {
+    color: var(--azul5);
+    padding: 1em;
+    text-shadow: 5px 5px 3px var(--azul1);
+}
+
+.apresentacao p{
+    text-align: center;
+}
+
+h2 {
+    color: var(--azul5);
+    font-size: 20px;
+    text-shadow: 5px 5px 3px var(--azul1);
+    text-align: center;
+    padding: 1em;
 }
 
 form {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
+.dados_login,
+.dados_cadastro,
+.dados_esqueceu_senha,
+.dados_troca_senha {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 
- .dados_login {
-   background-color: rgba(253, 238, 220, .7);
-   margin: 20px;
-   border-color: var(--cor4);
-   box-shadow: 0px 0px 2px 1px #000;
-   border-radius: 15px;
-   padding: 10px 20px;
-   width: 15%;
-   
- }
+    background-color: var(--azul1);
+    color: var(--azul7);
+    padding: 30px 40px;
+    border-radius: 10px;
+}
 
+.input_login,
+.input_cadastro,
+.input_esqueceu_senha,
+.input_troca_senha {
+    padding: 0.2em;
+}
 
- button {
-   background-color: var(--cor6);
-   padding: 3px 10px;
-   border-radius: 5px;
+.subdivisao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    padding: 1em;
+}
 
- }
+button,
+#logout { 
+    background-color: var(--laranja);
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    box-shadow: 0px 0px 10px 2px var(--azul1);
+    border-color: var(--azul1);
+    border-style: none;
+    color: var(--azul7);
+    font-weight: 700;
+}
 
- a:hover {
-   background-color: rgba(254,189,247,.4);
-   color: var(--cor1);
-   box-sizing: border-box;
-   border-radius: 5px;
-   box-shadow: 0px 0px 3px #000000;
-   padding: 7px;
-   margin: 5px;
+button:hover, 
+#logout:hover {
+background-color: var(--laranja2);
+color: var(--laranja);
+box-shadow: 0px 0px 5px var(--azul1) inset;
+}
 
- }
+strong {
+    color: var(--laranja);
+}

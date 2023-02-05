@@ -7,13 +7,11 @@
     <title>Login</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}" />
-    <link rel="stylesheet" href="../static/css/style2.css">
 </head>
 <body>
     <header>
         <a  class="link" href="{{ url_for('login') }}">Início</a>
         <a  class="link" href="{{ url_for('cadastro') }}">Faça seu cadastro</a>
-
     </header>
     <main>
         <section class="mensagem-flash">
@@ -27,17 +25,14 @@
                 {% endif %}
             {% endwith %}
         </section>
-
         <section class="login">
             <div class="apresentacao">
                 <h1>Seja bem vindo!</h1>
-                <p class="texto-apresentacao">Esta aplicação web foi desenvolvida usando Flask - Python, juntamente com HTML e CSS.<br>
-                    Faça seu cadastro e teste as funcionalidades existentes nela.</p>
+                <p class="texto-apresentacao">Esta aplicação web foi desenvolvida usando <strong>Flask - Python</strong>, juntamente com <strong>HTML e CSS</strong>.<br>
+                    <strong>Faça seu cadastro</strong> e teste as funcionalidades existentes nela.</p>
             </div>
-
             <div>
                 <h2>Faça seu login.</h2>
-
                 <form action="{{ url_for('autenticar') }}" method="POST">
                     <fieldset class="dados_login">
                         <div class="input_login">
@@ -57,6 +52,5 @@
             </div>
         </section>
     </main>
-
 </body>
 </html>

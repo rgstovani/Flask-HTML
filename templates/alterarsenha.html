@@ -10,12 +10,11 @@
 </head>
 <body>
     <header>
-        <a href="{{ url_for('login') }}">Início</a>
-        <a href="{{ url_for('cadastro') }}">Faça seu cadastro</a>
-
+        <a class="link" href="{{ url_for('login') }}">Início</a>
+        <a class="link" href="{{ url_for('cadastro') }}">Faça seu cadastro</a>
     </header>
     <main>
-        <div>
+        <section class="mensagem-flash">
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
                     <ul id="messages" class="list-unstyled">
@@ -25,23 +24,28 @@
                     </ul>
                 {% endif %}
             {% endwith %}
-        </div>
-        <div>
-            <h1>Alterar Senha</h1>
-            <p>Preencha as informações abaixo:</p>
-        </div>
-        <form action="{{ url_for('alterarsenha') }}" method="POST">
-            <div>
-                <label>Nova senha (*)</label>
-                <input type="text" name="senha" id="senha" required>
+        </section>
+        <section class="troca_senha">
+            <div class="informacoes">    
+                <h1>Alterar Senha</h1>
+                <p class="texto-apresentacao">Preencha as informações abaixo:</p>
             </div>
-            <div>
-                <label>Repita a senha (*)</label>
-                <input type="text" name="repetesenha" id="repetesenha" required>
-            </div>
-
-            <button type="submit">Alterar senha</button>
-        </form>
+            <form action="{{ url_for('alterarsenha') }}" method="POST">
+                <fieldset class="dados_troca_senha">
+                    <div class="input_troca_senha">
+                        <label>Nova senha (*)</label>
+                        <input type="text" name="senha" id="senha" required>
+                    </div>
+                    <div class="input_troca_senha">
+                        <label>Repita a senha (*)</label>
+                        <input type="text" name="repetesenha" id="repetesenha" required>
+                    </div>
+                </fieldset>
+                <div class="subdivisao">
+                    <button type="submit">Alterar senha</button>
+                </div>
+            </form>
+        </section>
     </main>
 </body>
 </html>
