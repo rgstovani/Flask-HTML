@@ -3,7 +3,7 @@ from hashlib import sha256
 
 
 def cria_bd():
-    conn = sqlite3.connect('dados_usuarios.db')
+    conn = sqlite3.connect('./app/dados_usuarios.db')
     cursor = conn.cursor()
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS users (
@@ -21,7 +21,7 @@ def adiciona_usuario_bd(nome, email, usuario, senha):
     hashsenha = sha256(senha.encode()).hexdigest()
     hashusuario = sha256(usuario.encode()).hexdigest()
     try:
-        conn = sqlite3.connect('dados_usuarios.db')
+        conn = sqlite3.connect('./app/dados_usuarios.db')
         cursor = conn.cursor()
         cursor.execute('''
         INSERT INTO users VALUES (:NOME, :EMAIL, :USUARIO, :SENHA)
@@ -37,7 +37,7 @@ def teste_login(usuario, senha):
     testeusuario = sha256(usuario.encode()).hexdigest()
     testesenha = sha256(senha.encode()).hexdigest()
 
-    conn = sqlite3.connect('dados_usuarios.db')
+    conn = sqlite3.connect('./app/dados_usuarios.db')
     cursor = conn.cursor()
     cursor.execute('''
     SELECT * FROM users WHERE (USUARIO=? AND SENHA=?)
@@ -57,7 +57,7 @@ def teste_login(usuario, senha):
 def esquecisenha_bd(email, usuario):
     hashusuario = sha256(usuario.encode()).hexdigest()
 
-    conn = sqlite3.connect('dados_usuarios.db')
+    conn = sqlite3.connect('./app/dados_usuarios.db')
     cursor = conn.cursor()
     cursor.execute('''
     SELECT * FROM users WHERE (EMAIL=? AND USUARIO=?)
@@ -77,7 +77,7 @@ def esquecisenha_bd(email, usuario):
 def altera_senha_bd(usuario, senha):
     hashsenha = sha256(senha.encode()).hexdigest()
     hashusuario = sha256(usuario.encode()).hexdigest()
-    conn = sqlite3.connect('dados_usuarios.db')
+    conn = sqlite3.connect('./app/dados_usuarios.db')
     cursor = conn.cursor()
     cursor.execute('''UPDATE users SET SENHA=? WHERE USUARIO=?
     ''', (hashsenha, hashusuario))

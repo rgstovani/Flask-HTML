@@ -29,6 +29,7 @@ header {
     align-content: baseline;
 }
 
+.projeto a,
 .link {
     background-color: var(--azul5);
     text-decoration: none;
@@ -41,6 +42,7 @@ header {
     padding: .6em 1em ;
 }
 
+.projeto a:hover,
 .link:hover {
     background-color: var(--azul1);
     color: var(--azul6);
@@ -81,6 +83,8 @@ h1 {
     color: var(--azul5);
     padding: 1em;
     text-shadow: 5px 5px 3px var(--azul1);
+    text-align: center;
+    font-size: 28px;
 }
 
 .apresentacao p{
@@ -105,7 +109,8 @@ form {
 .dados_login,
 .dados_cadastro,
 .dados_esqueceu_senha,
-.dados_troca_senha {
+.dados_troca_senha,
+.dados__cpf {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -154,4 +159,43 @@ box-shadow: 0px 0px 5px var(--azul1) inset;
 
 strong {
     color: var(--laranja);
+}
+
+
+.projetos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.projeto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--azul1);
+    box-shadow: 0px 0px 10px 2px var(--azul1);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+.projeto__descricao {
+    max-width: 300px;
+    min-height: 200px;
+    text-align: center;
+}
+
+
+.input__cpf {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dados__cpf__resultado {
+    text-align: center;
+    font-size: 20px;
 }

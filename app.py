@@ -1,6 +1,11 @@
 from flask import Flask, render_template, request, redirect, session, flash, url_for
+import sys
+sys.path.append('./app')
 from funcoes import *
+from validador_cpf import *
+from calculadorafrete import *
 import os
+
 
 app = Flask(__name__)
 app.secret_key = 'testeflaskhtml'
@@ -92,6 +97,37 @@ def alterarsenha():
         flash('Senha não alterada.')
         return render_template('alterarsenha.html')
 
+
+@app.route('/cpf', methods=['POST', 'GET'])
+def cpf():
+    if 'usuario_logado' not in session or session['usuario_logado'] is None:
+        return redirect(url_for('login'))
+    return render_template('cpf.html')
+
+
+@app.route('/validacpf', methods=['POST', 'GET'])
+def validacpf():
+    if 'usuario_logado' not in session or session['usuario_logado'] is None:
+        return redirect(url_for('login'))
+    cpf = request.form.get('cpf')
+    resultado = validador_cpf(cpf)
+    return render_template('cpf.html', resultado=resultado)
+
+
+@app.route('/calculadorafrete', methods=['POST', 'GET'])
+def calculadorafrete():
+    if 'usuario_logado' not in session or session['usuario_logado'] is None:
+        return redirect(url_for('login'))
+    return render_template('calculadorafrete.html')
+
+@app.route('/cotadordemoedas', methods=['POST', 'GET'])
+def cotadordemoedas():
+    if 'usuario_logado' not in session or session['usuario_logado'] is None:
+        return redirect(url_for('login'))
+    return render_template('cotadordemoedas.html')
+
+
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(host='0.0.0.0', port=port, debug=True)

@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 </head>
 <body>
-    <header>
+    <header class="header__projetos">
+        <a class="link" href="{{ url_for('index') }}">Início</a>
         <a class="link" id="logout" href="{{ url_for('logout') }}">Logout</a>
     </header>
     <section class="mensagem-flash">
@@ -28,6 +29,27 @@
         <p>Esta é apenas uma demonstracao simples de uma aplicação feita em <strong>Flask</strong>.<br>
             Voce ainda pode explorar a <strong>area de esqueci a senha</strong> e altera-la.<br>
             Sinta-se a vontade para explorar.</p>
+    </section>
+
+    <section class="projetos">
+        <div class="projeto">
+            <h2 class="projeto__titulo">Validador de CPF</h2>
+            <p class="projeto__descricao">Aqui você irá testar o validador de CPF, testando CPF via algoritmo para obter se é válido ou não o numero digitado.</p>
+            <a href="{{ url_for('cpf') }}">Acessar app</a>
+        </div>
+
+        <div class="projeto">
+            <h2 class="projeto__titulo">Cotador de Moeda</h2>
+            <p class="projeto__descricao">Este é um cotador de moedas, retornando o valor da cotação da moeda pré-escolhida.</p>
+            <a href="{{ url_for('cotadordemoedas') }}">Acessar app</a>
+        </div>
+
+        <div class="projeto">
+            <h2 class="projeto__titulo">Calculadora de Frete</h2>
+            <p class="projeto__descricao">Essa calculadora de frete, pesquisa CEP, endereços parciais e endereços completos, retornando a distancia entre eles e o tempo medio gasto, inserindo o valor a ser cobrado por KM, ele calcula o valor total do frete.</p>
+            <a href="{{ url_for('calculadorafrete') }}">Acessar app</a>
+        </div>
+
     </section>
 </body>
 </html>
