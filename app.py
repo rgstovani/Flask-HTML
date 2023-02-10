@@ -4,6 +4,7 @@ sys.path.append('./app')
 from funcoes import *
 from validador_cpf import *
 from calculadorafrete import *
+from cotador import *
 import os
 
 
@@ -119,6 +120,24 @@ def calculadorafrete():
     if 'usuario_logado' not in session or session['usuario_logado'] is None:
         return redirect(url_for('login'))
     return render_template('calculadorafrete.html')
+
+
+@app.route('/pesquisaendereco', methods=['POST', 'GET'])
+def pesquisaendereco():
+    if 'usuario_logado' not in session or session['usuario_logado'] is None:
+        return redirect(url_for('login'))
+    ponto1 = request.form.get('origem')
+    ponto2 = request.form.get('destino')
+
+    resultado = consulta_endereco(ponto1, ponto2)
+    origem = f'De: {resultado[0]}'
+    destino = f'Para: {resultado[1]}'
+    km = f'KM: {resultado[2]}'
+    duracao = f'Duração: {resultado[3]}'
+
+    return render_template('calculadorafrete.html', origem=origem,
+                           destino=destino, km=km, duracao=duracao)
+
 
 @app.route('/cotadordemoedas', methods=['POST', 'GET'])
 def cotadordemoedas():

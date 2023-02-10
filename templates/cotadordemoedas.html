@@ -13,6 +13,37 @@
         <a  class="link" href="{{ url_for('index') }}">Início</a>
         <a class="link" id="logout" href="{{ url_for('logout') }}">Logout</a>
     </header>
+    <section class="mensagem-flash">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul id="messages" class="list-unstyled">
+                {% for message in messages %}
+                    <li class="alert alert-success">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </section>
+    <section>
+        <form action="">
+            <div>
+                <label for="">Escolha uma moeda:</label>
+                <select name="" id="">
+                    <option value="EURBRL">EURO</option>
+                    <option value="USDBRL">DOLAR AME</option>
+                    <option value="CADBRL">DOLAR CAN</option>
+                    <option value="AUBRL">DOLAR AUS</option>
+                    <option value="GBPBRL">LIBRA</option>
+                    <option value="JPYBRL">IENE</option>
+                    <option value="BOBBRL">BOLIVIANO</option>
+                    <option value="PYGBRL">GUARANI PAR</option>
+                    <option value="ARSBRL">PESO ARG</option>
+                    <option value="COPBRL">PESO COL</option>
+                </select>
+            </div>
+            <button type="submit">Cotar</button>
+        </form>
+    </section>
 
 </body>
 </html>
