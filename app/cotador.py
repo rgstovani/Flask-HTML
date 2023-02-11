@@ -1,17 +1,13 @@
-# import requests
-# import time
-# from datetime import datetime
-#
-#
-# opcao = [1,2,3,4,5,6,7,8,9]
-# moeda_escolhida = {1: 'Euro', 2: 'Dólar Americano', 3: 'Dólar Canadense', 4: 'Dólar Australiano', 5: 'Iene Japonês', 6: 'Boliviano', 7: 'Guarani Paraguaio', 8: 'Peso Argentino', 9: 'Peso Colombiano'}
-# sigla_moeda = {1: 'EURBRL', 2: 'USDBRL', 3: 'CAD', 4: 'AU', 5: 'JPY', 6: 'BOB', 7: 'PYG', 8: 'ARS', 9: 'COP'}
-#
-# def cotar():
-#     requisicao = requests.get('http://economia.awesomeapi.com.br/json/last/USD-BRL,CAD-BRL,EUR-BRL,ARS-BRL,JPY-BRL,AUD-BRL,PYG-BRL,COP-BRL,BOB-BRL')
-#     cotacao = requisicao.json()
-#     moeda = float(cotacao[sigla_moeda[escolha]]['bid'])
-#     return moeda
+import requests
+import time
+from datetime import datetime
+
+
+def cotar():
+    requisicao = requests.get('http://economia.awesomeapi.com.br/json/last/USD-BRL,GBP-BRL,CAD-BRL,EUR-BRL,ARS-BRL,JPY-BRL,AUD-BRL,PYG-BRL,COP-BRL,BOB-BRL')
+    cotacao = requisicao.json()
+    moeda = float(cotacao[sigla_moeda[escolha]]['bid'])
+    return moeda
 #
 # #Cotação da moeda
 # print(f'O valor atual do {moeda_escolhida[escolha]} é ',cotar())

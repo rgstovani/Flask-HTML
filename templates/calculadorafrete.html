@@ -7,6 +7,8 @@
     <title>Calculadora de Frete</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+
+    <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body>
     <header>
@@ -16,9 +18,9 @@
     <section class="mensagem-flash">
         {% with messages = get_flashed_messages() %}
             {% if messages %}
-                <ul id="messages" class="list-unstyled">
+                <ul>
                 {% for message in messages %}
-                    <li class="alert alert-success">{{ message }}</li>
+                    <li class="alert">{{ message }}</li>
                 {% endfor %}
                 </ul>
             {% endif %}
@@ -27,25 +29,59 @@
 
     <section>
         <h1>Calculadora de Frete</h1>
-        <form action="{{ url_for('pesquisaendereco') }}" method="POST">
-            <fieldset class="dados__endereco">
-                <div class="input__endereco">
-                    <label> Origem </label>
-                    <input type="text" name="origem" id="origem" required>
-                
-                    <label>Destino</label>
-                    <input type="text" name="destino" id="destino" required>
-                
-                    <button type="submit">Pesquisar</button>
-                </div>
-            </fieldset>
+        <div class="calculadora__frete">
+            <form action="{{ url_for('pesquisaendereco') }}" method="POST">
+                <fieldset class="dados__endereco">
+                    <div class="input__endereco">
+                        <label> Origem </label>
+                        <input type="text" name="origem" id="origem" required>
+                    
+                        <label>Destino</label>
+                        <input type="text" name="destino" id="destino" required>
+                    
+                        <button type="submit">Pesquisar</button>
+                    </div>
+                </fieldset>
+            </form>
+
             <div class="output__endereco">
-                <p class="dados__endereco__resultado">{{ origem }}</p>
-                <p class="dados__endereco__resultado">{{ destino }}</p>
-                <p class="dados__endereco__resultado">{{ km }}</p>
-                <p class="dados__endereco__resultado">{{ duracao }}</p>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="item__output__endereco">
+                    {% for message in messages %}
+                        <li>{{ origem }}</li>
+                        <li >{{ destino }}</li>
+                        <li >{{ km }}</li>
+                        <li >{{ duracao }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+                {% endwith %}
             </div>
-        </form>
+
+            <form action="{{ url_for('calculafrete') }}" method="POST">
+                <fieldset class="dados__frete">
+                    <div class="input__frete">
+                        <label> Valor por Km </label>
+                        <input type="text" name="valorkm" id="valorkm" required>
+                    
+                        <button type="submit">Calcular</button>
+                    </div>
+                </fieldset>
+            </form>
+
+            <div class="output__frete">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul>
+                        {% for message in messages %}
+                            <li class="item__output__frete">{{ valorfrete }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                    {% endwith %}
+            </div>
+        </div>
     </section>
 </body>
 </html>

@@ -130,6 +130,9 @@ def pesquisaendereco():
     ponto2 = request.form.get('destino')
 
     resultado = consulta_endereco(ponto1, ponto2)
+    flash('Pesquisa Efetuada')
+
+
     origem = f'De: {resultado[0]}'
     destino = f'Para: {resultado[1]}'
     km = f'KM: {resultado[2]}'
@@ -144,6 +147,12 @@ def cotadordemoedas():
     if 'usuario_logado' not in session or session['usuario_logado'] is None:
         return redirect(url_for('login'))
     return render_template('cotadordemoedas.html')
+
+@app.route('/calculafrete', methods=['POST', 'GET'])
+def calculafrete():
+    if 'usuario_logado' not in session or session['usuario_logado'] is None:
+        return redirect(url_for('login'))
+    return render_template('calculadorafrete.html')
 
 
 
