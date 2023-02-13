@@ -62,8 +62,9 @@
             <form action="{{ url_for('calculafrete') }}" method="POST">
                 <fieldset class="dados__frete">
                     <div class="input__frete">
+
                         <label> Valor por Km </label>
-                        <input type="text" name="valorkm" id="valorkm" required>
+                        <input type="number" name="valorkm" id="valorkm" required>
                     
                         <button type="submit">Calcular</button>
                     </div>
@@ -75,7 +76,7 @@
                     {% if messages %}
                         <ul>
                         {% for message in messages %}
-                            <li class="item__output__frete">{{ valorfrete }}</li>
+                            <li class="item__output__frete">Para rodar {{ km2 }}, o valor cobrado será de R${{ valorfrete }}</li>
                         {% endfor %}
                         </ul>
                     {% endif %}

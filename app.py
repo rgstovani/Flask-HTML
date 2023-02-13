@@ -126,20 +126,36 @@ def calculadorafrete():
 def pesquisaendereco():
     if 'usuario_logado' not in session or session['usuario_logado'] is None:
         return redirect(url_for('login'))
+
+
     ponto1 = request.form.get('origem')
     ponto2 = request.form.get('destino')
 
     resultado = consulta_endereco(ponto1, ponto2)
     flash('Pesquisa Efetuada')
 
-
     origem = f'De: {resultado[0]}'
     destino = f'Para: {resultado[1]}'
     km = f'KM: {resultado[2]}'
     duracao = f'Duração: {resultado[3]}'
 
+    session['km'] = km
+
     return render_template('calculadorafrete.html', origem=origem,
                            destino=destino, km=km, duracao=duracao)
+
+@app.route('/calculafrete', methods=['POST', 'GET'])
+def calculafrete():
+    if 'usuario_logado' not in session or session['usuario_logado'] is None:
+        return redirect(url_for('login'))
+
+    flash('Calculo Efetuado')
+
+    km2 = float(session['km'].split(": ")[1])
+    valorkm = float(request.form.get('valorkm'))
+
+    valorfrete = (km2 * valorkm)
+    return render_template('calculadorafrete.html', valorfrete=valorfrete, km2=km2)
 
 
 @app.route('/cotadordemoedas', methods=['POST', 'GET'])
@@ -147,14 +163,6 @@ def cotadordemoedas():
     if 'usuario_logado' not in session or session['usuario_logado'] is None:
         return redirect(url_for('login'))
     return render_template('cotadordemoedas.html')
-
-@app.route('/calculafrete', methods=['POST', 'GET'])
-def calculafrete():
-    if 'usuario_logado' not in session or session['usuario_logado'] is None:
-        return redirect(url_for('login'))
-    return render_template('calculadorafrete.html')
-
-
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
