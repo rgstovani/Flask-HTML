@@ -114,7 +114,6 @@ form {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-
     background-color: var(--azul1);
     color: var(--azul7);
     padding: 30px 40px;
@@ -205,17 +204,12 @@ strong {
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    
     background-color: var(--azul1);
     border-radius: 15px;
     padding: 40px 0px;
     min-width: 200px;
     max-width: 400px;
     margin: 0 auto;
-
-
-
 }
 
 .dados__endereco,
@@ -231,7 +225,6 @@ strong {
     flex-direction: column;
     gap:10px;
     padding: 40px;
-
     background-color: var(--azul2);
     border-radius: 15px;
 }
