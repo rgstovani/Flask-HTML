@@ -3,11 +3,12 @@ import time
 from datetime import datetime
 
 
-def cotar():
+def cotar(escolha):
     requisicao = requests.get('http://economia.awesomeapi.com.br/json/last/USD-BRL,GBP-BRL,CAD-BRL,EUR-BRL,ARS-BRL,JPY-BRL,AUD-BRL,PYG-BRL,COP-BRL,BOB-BRL')
     cotacao = requisicao.json()
-    moeda = float(cotacao[sigla_moeda[escolha]]['bid'])
+    moeda = float(cotacao[escolha]['bid'])
     return moeda
+
 #
 # #Cotação da moeda
 # print(f'O valor atual do {moeda_escolhida[escolha]} é ',cotar())
@@ -29,11 +30,6 @@ def cotar():
 #         break
 #     else:
 #         print('Digite apenas numeros.!')
-#
-# #Execução
-# cria_linha2()
-# print(f"{'Agora você pode minimizar, te avisaremos quando atigir o valor desejado.':^80}")
-# cria_linha2()
 #
 # while True:
 #     cotar()

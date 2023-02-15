@@ -24,15 +24,15 @@
             {% endif %}
         {% endwith %}
     </section>
-    <section>
-        <form action="">
-            <div>
+    <section class="cotador__moeda">
+        <form action="{{ url_for('cotarmoeda') }}" method="POST">
+            <div class="input__cotador__moeda">
                 <label for="">Escolha uma moeda:</label>
-                <select name="" id="">
+                <select name="moedaescolhida" id="moedaescolhida">
                     <option value="EURBRL">EURO</option>
                     <option value="USDBRL">DOLAR AME</option>
                     <option value="CADBRL">DOLAR CAN</option>
-                    <option value="AUBRL">DOLAR AUS</option>
+                    <option value="AUDBRL">DOLAR AUS</option>
                     <option value="GBPBRL">LIBRA</option>
                     <option value="JPYBRL">IENE</option>
                     <option value="BOBBRL">BOLIVIANO</option>
@@ -40,9 +40,21 @@
                     <option value="ARSBRL">PESO ARG</option>
                     <option value="COPBRL">PESO COL</option>
                 </select>
+                <button type="submit">Cotar</button>
             </div>
-            <button type="submit">Cotar</button>
+            
         </form>
+        <div class="output__cotacao">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="item__output__cotacao">
+                {% for message in messages %}
+                    <li>{{ cotacao }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% endwith %}
+        </div>
     </section>
 
 </body>

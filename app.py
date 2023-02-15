@@ -154,7 +154,7 @@ def calculafrete():
     km2 = float(session['km'].split(": ")[1])
     valorkm = float(request.form.get('valorkm'))
 
-    valorfrete = (km2 * valorkm)
+    valorfrete = "{:.2f}".format(km2 * valorkm)
     return render_template('calculadorafrete.html', valorfrete=valorfrete, km2=km2)
 
 
@@ -163,6 +163,21 @@ def cotadordemoedas():
     if 'usuario_logado' not in session or session['usuario_logado'] is None:
         return redirect(url_for('login'))
     return render_template('cotadordemoedas.html')
+
+@app.route('/cotarmoeda', methods=['POST', 'GET'])
+def cotarmoeda():
+    if 'usuario_logado' not in session or session['usuario_logado'] is None:
+        return redirect(url_for('login'))
+
+    moedaescolhida = str(request.form.get('moedaescolhida'))
+    valor_cotado = cotar(moedaescolhida)
+    flash('Cotação efetuada com sucesso.')
+    cotacao = f'O valor da {moedaescolhida} é de {valor_cotado}.'
+
+    return render_template('cotadordemoedas.html', cotacao=cotacao)
+
+
+
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
